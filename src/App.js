@@ -42,13 +42,8 @@ export default function App() {
 
   var products = [
     {
-      id: 1,
-      name: <input type="text" id="fname" name="fname" />,
-      price: <input type="text" id="lname" name="lname" />
-    },
-    {
       id: 9,
-      name: 'asfd',
+      name: '',
       price: 55
     },
     {
@@ -69,7 +64,7 @@ export default function App() {
     {
       id: 1,
       name: 'type1',
-      price: 123
+      price: ''
     },
     {
       id: 2,
@@ -84,7 +79,7 @@ export default function App() {
     {
       id: 2,
       name: 'type2',
-      price: 456
+      price: ''
     }
   ];
 
@@ -93,43 +88,52 @@ export default function App() {
       <ToolkitProvider keyField="id" data={products} columns={columns} search>
         {props => (
           <div>
+            {console.log(props)}
             <SearchBar {...props.searchProps} />
             <hr />
-            <BootstrapTable
+            {/* <BootstrapTable
               {...props.baseProps}
               pagination={paginationFactory()}
-            />
+            /> */}
+            <Table className="broker-table">
+              <thead>
+                <tr>
+                  {props.baseProps.columns.map(header => (
+                    <th> {header.text}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {props.baseProps.data.map(data => (
+                  <tr>
+                    <td>
+                      {data.id == '' ? (
+                        <input type="text" id="fname" name="fname" />
+                      ) : (
+                        data.id
+                      )}
+                    </td>
+                    <td>
+                      {data.name == '' ? (
+                        <input type="text" id="fname" name="fname" />
+                      ) : (
+                        data.name
+                      )}
+                    </td>
+                    <td>
+                      {data.price == '' ? (
+                        <input type="text" id="fname" name="fname" />
+                      ) : (
+                        data.price
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
           </div>
         )}
       </ToolkitProvider>
-      <Table className="broker-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td scope="row">2</td>
-            <td>Jacob</td>
-            <td>tdornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr className="light-red">
-            <td scope="row">1</td>
-            <td>Jacob</td>
-            <td>
-              <Input type="text" id="fname" name="fname" size="sm" />
-            </td>
-            <td>
-              <Input type="text" id="fname" name="fname" size="sm" />
-            </td>
-          </tr>
-        </tbody>
-      </Table>
     </div>
   );
 }
