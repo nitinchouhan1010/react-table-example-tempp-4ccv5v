@@ -3,10 +3,8 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Table, Input } from 'reactstrap';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 
@@ -104,21 +102,21 @@ export default function App() {
                   <tr>
                     <td>
                       {data.id == '' ? (
-                        <input type="text" id="fname" name="fname" />
+                        <Input type="text" size="sm" name="fname" />
                       ) : (
                         data.id
                       )}
                     </td>
                     <td>
                       {data.name == '' ? (
-                        <input type="text" id="fname" name="fname" />
+                        <Input type="text" size="sm" name="fname" />
                       ) : (
                         data.name
                       )}
                     </td>
                     <td>
                       {data.price == '' ? (
-                        <input type="text" id="fname" name="fname" />
+                        <Input type="text" size="sm" name="fname" />
                       ) : (
                         data.price
                       )}
