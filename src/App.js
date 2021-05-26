@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import { Table, Input } from 'reactstrap';
+import { Table, Input, CustomInput, FormGroup, Label } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
@@ -89,6 +89,12 @@ export default function App() {
             {console.log(props)}
             <SearchBar {...props.searchProps} />
             <hr />
+            <div>
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider round" />
+              </label>
+            </div>
             <Table className="broker-table">
               <thead>
                 <tr>
@@ -102,21 +108,21 @@ export default function App() {
                   <tr>
                     <td>
                       {data.id == '' ? (
-                        <Input type="text" size="sm" name="fname" />
+                        <Input type="text" bsSize="sm" name="fname" />
                       ) : (
                         data.id
                       )}
                     </td>
                     <td>
                       {data.name == '' ? (
-                        <Input type="text" size="sm" name="fname" />
+                        <Input type="text" bsSize="sm" name="fname" />
                       ) : (
                         data.name
                       )}
                     </td>
                     <td>
                       {data.price == '' ? (
-                        <Input type="text" size="sm" name="fname" />
+                        <Input type="text" bsSize="sm" name="fname" />
                       ) : (
                         data.price
                       )}
