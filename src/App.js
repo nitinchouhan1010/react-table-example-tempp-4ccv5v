@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import { Table, Input, CustomInput, FormGroup, Label } from 'reactstrap';
+import { Table, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
@@ -89,11 +89,14 @@ export default function App() {
             {console.log(props)}
             <SearchBar {...props.searchProps} />
             <hr />
-            <div>
-              <label class="switch">
+            <div className="text-right mb-3">
+              <label className="switch align-middle">
                 <input type="checkbox" />
-                <span class="slider round" />
+                <span className="slider round" />
               </label>
+              <span className="mx-2">
+                Show records whose details are missing
+              </span>
             </div>
             <Table className="broker-table">
               <thead>
