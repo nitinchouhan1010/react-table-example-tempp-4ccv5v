@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
-import paginationFactory from 'react-bootstrap-table2-paginator';
+
 import { Table, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
-
+import paginationFactory from 'react-bootstrap-table2-paginator';
 const { SearchBar } = Search;
 
 export default function App() {
@@ -83,10 +83,17 @@ export default function App() {
 
   return (
     <div className="App container">
-      <ToolkitProvider keyField="id" data={products} columns={columns} search>
+      <ToolkitProvider
+        keyField="id"
+        data={products}
+        columns={columns}
+        pagination={paginationFactory()}
+        search
+      >
         {props => (
           <div>
             {console.log(props)}
+
             <SearchBar {...props.searchProps} />
             <hr />
             <div className="text-right mb-3">
@@ -108,29 +115,57 @@ export default function App() {
               </thead>
               <tbody>
                 {props.baseProps.data.map(data => (
-                  <tr>
-                    <td>
-                      {data.id == '' ? (
-                        <Input type="text" bsSize="sm" name="fname" />
-                      ) : (
-                        data.id
-                      )}
-                    </td>
-                    <td>
-                      {data.name == '' ? (
-                        <Input type="text" bsSize="sm" name="fname" />
-                      ) : (
-                        data.name
-                      )}
-                    </td>
-                    <td>
-                      {data.price == '' ? (
-                        <Input type="text" bsSize="sm" name="fname" />
-                      ) : (
-                        data.price
-                      )}
-                    </td>
-                  </tr>
+                  <>
+                    {data.id == '' || data.name == '' || data.price == '' ? (
+                      <tr className="light-red">
+                        <td>
+                          {data.id == '' ? (
+                            <Input type="text" bsSize="sm" name="fname" />
+                          ) : (
+                            data.id
+                          )}
+                        </td>
+                        <td>
+                          {data.name == '' ? (
+                            <Input type="text" bsSize="sm" name="fname" />
+                          ) : (
+                            data.name
+                          )}
+                        </td>
+                        <td>
+                          {data.price == '' ? (
+                            <Input type="text" bsSize="sm" name="fname" />
+                          ) : (
+                            data.price
+                          )}
+                        </td>
+                      </tr>
+                    ) : (
+                      <tr className="">
+                        <td>
+                          {data.id == '' ? (
+                            <Input type="text" bsSize="sm" name="fname" />
+                          ) : (
+                            data.id
+                          )}
+                        </td>
+                        <td>
+                          {data.name == '' ? (
+                            <Input type="text" bsSize="sm" name="fname" />
+                          ) : (
+                            data.name
+                          )}
+                        </td>
+                        <td>
+                          {data.price == '' ? (
+                            <Input type="text" bsSize="sm" name="fname" />
+                          ) : (
+                            data.price
+                          )}
+                        </td>
+                      </tr>
+                    )}
+                  </>
                 ))}
               </tbody>
             </Table>
